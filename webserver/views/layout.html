@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{block "title" .}}{{end}}</title>
+  <link href="static/output.css" rel="stylesheet">
+  <script src="https://unpkg.com/htmx.org@1.9.4"></script>
+  <script src="https://unpkg.com/hyperscript.org@0.9.7"></script>
+  <!-- script>
+    htmx.logger = function(elt, event, data) {
+      if(console) {
+        console.log(event, elt, data);
+      }
+    }
+  </script -->
+</head>
+<body>
+
+{{template "header" .}}
+
+<main id="content" class="container mx-auto md:w-2/3 lg:w-1/2">
+{{block "content" .}}{{end}}
+</main>
+
+</body>
+</html>
+

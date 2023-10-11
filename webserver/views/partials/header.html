@@ -1,0 +1,12 @@
+{{define "header"}}
+<div class="header bg-gray-800 py-1 text-white px-6 flex items-center">
+
+  <div class="font-bold text-2xl py-1 pr-10 leading-tight">
+    {{.HeaderTitle}}
+  </div>
+
+  <div hx-trigger="content-swap" hx-get="/nav">
+    {{template "nav" .}}
+  </div>
+</div>
+{{end}}

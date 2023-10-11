@@ -1,0 +1,29 @@
+{{define "nav"}}
+<ul id="nav" class="text-left flex gap-2" hx-target="#content">
+    <!-- _="on htmx:beforeOnLoad take .active from .links for event.target" -->
+  {{$a := .active}}
+  {{range .Nav.Pages}}
+    <li class="links {{if eq $a .Link}}active{{end}}"
+        hx-get="{{.Link}}"
+        hx-push-url="{{.Page}}">
+      {{.Label}}
+    </li>
+  {{end}}
+</ul>
+
+
+
+
+<script>
+  /*
+  document
+    .getElementById('nav')
+    .addEventListener('htmx:beforeOnLoad', function(evt) {
+      for (const el of document.getElementsByClassName('links')) {
+        el.classList.toggle('active');
+    }
+  })
+  */
+</script>
+{{end}}
+
