@@ -1,9 +1,15 @@
 package main
 
-import "zoo/webserver"
+import (
+	"zoo/services"
+	"zoo/webserver"
+)
 
 func main() {
 	println("hello")
-	webserver.NewWebServer()
+
+	zoo := services.NewZoo()
+
+	webserver.NewWebServer(zoo)
 	webserver.Run("3000")
 }

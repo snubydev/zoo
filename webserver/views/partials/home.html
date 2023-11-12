@@ -1,12 +1,19 @@
 {{define "home"}}
-  <div class="text-xl">Zoo</div>
+<script>
+  const app = new App({
+    target: document.getElementById('app')
+  })
+</script>
+
+  <div class="text-3xl py-10">Zoo</div>
   <input class="rounded-lg mx-auto w-full p-4 border-2 shadow-lg text-2xl font-semibold"
          type="text"
-         name="ticker"
+         name="searchInput"
          hx-get="/search"
          hx-trigger="keyup changed delay:100ms"
          hx-target="#search-results"
   />
+
   <div id="search-results"></div>
 
   <div id="stock-details"></div>

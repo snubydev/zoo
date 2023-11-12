@@ -1,3 +1,5 @@
 
 tailwind:
-	npx tailwindcss -i ./src/input.css -o ./static/output.css --watch
+	npx tailwindcss -c tailwind.config.js -o ./static/output.css --watch
+
+	#npx tailwindcss -i ./src/input.css -o ./static/output.css --watch

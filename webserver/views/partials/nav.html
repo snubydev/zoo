@@ -1,9 +1,10 @@
 {{define "nav"}}
-<ul id="nav" class="text-left flex gap-2" hx-target="#content">
-    <!-- _="on htmx:beforeOnLoad take .active from .links for event.target" -->
+<ul id="nav" class="text-left flex gap-2 select-none"
+    hx-target="#content"
+     _="on htmx:beforeOnLoad take .active from .links for event.target">
   {{$a := .active}}
   {{range .Nav.Pages}}
-    <li class="links {{if eq $a .Link}}active{{end}}"
+    <li class="links {{if eq $a .Link}}active{{end}} cursor-pointer"
         hx-get="{{.Link}}"
         hx-push-url="{{.Page}}">
       {{.Label}}

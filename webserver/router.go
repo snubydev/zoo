@@ -2,17 +2,20 @@ package webserver
 
 import (
 	"fmt"
+	"github.com/go-chi/chi/v5"
 	"log"
 	"net/http"
 	"os"
 	"path/filepath"
-
-	"github.com/go-chi/chi/v5"
 )
+
+type ZooService interface {
+	Search(text string) []string
+}
 
 var r *chi.Mux
 
-func NewWebServer() *chi.Mux {
+func NewWebServer(zoo ZooService) *chi.Mux {
 
 	r = chi.NewRouter()
 
@@ -53,6 +56,22 @@ func NewWebServer() *chi.Mux {
 	r.Get("/nav", func(w http.ResponseWriter, r *http.Request) {
 		name := "nav.html"
 		err := t.RenderWrapper(w, r, name, data)
+		if err != nil {
+			log.Printf("[ERROR] %s", err)
+			http.Error(w, err.Error(), http.StatusBadRequest)
+		}
+	})
+
+	r.Get("/search", func(w http.ResponseWriter, r *http.Request) {
+		searchString := r.URL.Query().Get("searchInput")
+		if searchString == "" {
+			return
+		}
+		result := zoo.Search(searchString)
+		if len(result) == 0 {
+			return
+		}
+		err := t.RenderComponent(w, "animal-list.html", result)
 		if err != nil {
 			log.Printf("[ERROR] %s", err)
 			http.Error(w, err.Error(), http.StatusBadRequest)
