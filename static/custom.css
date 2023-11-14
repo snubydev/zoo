@@ -1,3 +1,7 @@
+body {
+  overflow: overlay;
+}
+
 #nav .active {
   border-bottom: 1px solid;
 }

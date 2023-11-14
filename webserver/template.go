@@ -24,7 +24,7 @@ func NewTemplate() *Template {
 	}
 	templates := template.Must(template.New("").
 		Funcs(funcMap).
-		ParseFS(tmplFS, "views/*.html", "views/partials/*.html"))
+		ParseFS(tmplFS, "views/*.html", "views/partials/*.html", "views/pages/*.html"))
 	return &Template{
 		templates: templates,
 	}
@@ -32,7 +32,7 @@ func NewTemplate() *Template {
 
 func (t *Template) Render(w io.Writer, name string, data interface{}) error {
 	tmpl := template.Must(t.templates.Clone())
-	tmpl = template.Must(tmpl.ParseFS(tmplFS, "views/"+name))
+	tmpl = template.Must(tmpl.ParseFS(tmplFS, "views/**/"+name))
 	return tmpl.ExecuteTemplate(w, name, data)
 }
 
