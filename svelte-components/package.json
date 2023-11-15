@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build -c 'vite.web-comp.config.js' && cp dist/*.comp.js ../static/ && rm ../static/index-*.js && cp dist/index-*.js ../static/",
+    "clear": "rm -f ../static/index-*.js && rm -f ../static/*.comp.svelte",
+    "copy": "cp dist/*.comp.js ../static/ && cp dist/index-*.js ../static/",
+    "build": "yarn clear && yarn vite build -c 'vite.web-comp.config.js' && yarn copy",
     "preview": "vite preview",
     "package": "svelte-kit sync && svelte-package && publint",
     "prepublishOnly": "npm run package"
