@@ -1,5 +1,5 @@
 {{define "nav"}}
-<ul id="nav" class="text-left flex gap-2 select-none"
+<ul id="nav" class="text-left flex gap-4 select-none"
     hx-target="#content"
      _="on htmx:beforeOnLoad take .active from .links for event.target">
   {{$a := .active}}

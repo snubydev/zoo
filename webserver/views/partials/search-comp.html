@@ -1,0 +1,29 @@
+{{define "search-comp"}}
+
+  <script src="/static/List.comp.js" type="module"></script>
+
+  <script>
+    async function search (text) {
+      console.log('search: ', text)
+      const searchParam = 'searchInput=' + text
+      const resp = await fetch('/search/json?' + searchParam)
+      const animals = await resp.json()
+      document.querySelector('zoo-list')
+        .setAttribute('custom_items', JSON.stringify(animals))
+    }
+  </script>
+
+  <div class="text-3xl py-10">Zoo Component</div>
+  <input class="rounded-lg mx-auto w-full p-4 border-2 shadow-lg text-2xl font-semibold"
+         type="text"
+         name="searchInput2"
+         onkeyup="search(value)"
+  />
+
+  <zoo-list title={{.ListTitle}} />
+
+  <script>
+    document.querySelector('zoo-list').setAttribute('custom_items', JSON.stringify({{.ListItems}}))
+  </script>
+
+{{end}}
