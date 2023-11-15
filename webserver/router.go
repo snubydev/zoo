@@ -29,7 +29,7 @@ func NewWebServer(zoo ZooService) *chi.Mux {
 			"Pages": []PageItem{
 				{Icon: "", Label: "Search Htmx", Link: "/", Page: "/"},
 				{Icon: "", Label: "Search Component", Link: "/search-comp", Page: "/search-comp"},
-				{Icon: "", Label: "Graph", Link: "/graph", Page: "/graph"},
+				{Icon: "", Label: "About", Link: "/about", Page: "/about"},
 			},
 		},
 	}
@@ -57,9 +57,9 @@ func NewWebServer(zoo ZooService) *chi.Mux {
 		}
 	})
 
-	r.Get("/graph", func(w http.ResponseWriter, r *http.Request) {
-		data["active"] = "/graph"
-		name := "graph.page.html"
+	r.Get("/about", func(w http.ResponseWriter, r *http.Request) {
+		data["active"] = "/about"
+		name := "about.page.html"
 		r.Header.Set("HX-Trigger-After-Swap", "content-swap")
 		err := t.RenderWrapper(w, r, name, data)
 		if err != nil {
