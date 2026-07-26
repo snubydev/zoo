@@ -1,0 +1,20 @@
+package components
+
+import ( 
+    "zoo/webserver/models"
+)
+
+templ nav(data models.Data) {
+    <ul id="nav" class="text-left flex gap-4 select-none"
+        hx-target="#content"
+        _="on htmx:beforeOnLoad take .active from .links for event.target">
+        
+        for _, p := range data.Pages{
+            <li class={"links cursor-pointer", templ.KV("active", p.Link == data.Active)}
+                hx-get={ p.Link }
+                hx-push-url={ p.Page }>
+                { p.Label }
+            </li>
+        }
+    </ul>
+}

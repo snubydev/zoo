@@ -1,4 +1,4 @@
-package webserver
+package models
 
 type PageItem struct {
 	Icon  string
@@ -8,5 +8,10 @@ type PageItem struct {
 }
 
 type Data struct {
+	Active string
 	HeaderTitle string
+	Pages []PageItem
+	ListTitle string
+	ListAnimals []string
 }
+

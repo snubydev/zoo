@@ -1,0 +1,16 @@
+package components
+
+templ AnimalList(list []string) {
+    <div>
+    <div class="my-4 text-2xl">
+        Animals found
+    </div>
+
+    for _, animal := range list {
+        <div class="mb-2 text-lg">
+            {animal}
+        </div>
+    }
+
+    </div>
+}
