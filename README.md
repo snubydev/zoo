@@ -1,5 +1,5 @@
 # Web application examples
-+ Golang backend server-side html/templates web 
++ Golang backend server-side web by github.com/a-h/templ package
 + Svelte web components
 + HTMX
 

@@ -1,5 +1,10 @@
-{{define "search-comp"}}
+package components
 
+import (
+    "zoo/webserver/models"
+)
+
+templ SearchComp(data models.Data) {
   <script src="/static/List.comp.js" type="module"></script>
 
   <script>
@@ -20,10 +25,9 @@
          onkeyup="search(value)"
   />
 
-  <zoo-list title={{.ListTitle}} />
+  <zoo-list title={data.ListTitle} />
 
   <script>
-    document.querySelector('zoo-list').setAttribute('custom_items', JSON.stringify({{.ListItems}}))
+    document.querySelector('zoo-list').setAttribute('custom_items', JSON.stringify({data.ListItems}))
   </script>
-
-{{end}}
+}

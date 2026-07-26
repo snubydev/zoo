@@ -1,3 +1,5 @@
+webserver/components/*_templ.go
+node_modules
 zoo
 bin
 /tmp

@@ -6,10 +6,7 @@ import (
 )
 
 func main() {
-	println("hello")
-
 	zoo := services.NewZoo()
-
 	webserver.NewWebServer(zoo)
 	webserver.Run("3000")
 }
